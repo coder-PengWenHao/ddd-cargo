@@ -3,10 +3,12 @@ package com.coderpwh.cargo.infrastructrue.persistence.repository.service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
+import com.coderpwh.cargo.infrastructrue.persistence.converter.CargoBookConverter;
 import com.coderpwh.cargo.infrastructrue.persistence.entity.CargoBookDO;
 import com.coderpwh.cargo.infrastructrue.persistence.mapper.CargoBookDOMapper;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,6 +20,9 @@ import java.util.List;
 public class CarGoRepositoryImpl extends ServiceImpl<CargoBookDOMapper, CargoBookDO> implements CarGoRepository {
 
 
+    @Resource
+    private CargoBookConverter cargoBookConverter;
+
     @Override
     public boolean saveBatch(List<CargoBook> list) {
         return false;
@@ -25,7 +30,8 @@ public class CarGoRepositoryImpl extends ServiceImpl<CargoBookDOMapper, CargoBoo
 
     @Override
     public boolean save(CargoBook cargoBook) {
-        return false;
+        CargoBookDO cargoBookDO = cargoBookConverter.toDTO(cargoBook);
+        return super.save(cargoBookDO);
     }
 
     @Override
