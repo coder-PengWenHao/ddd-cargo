@@ -3,7 +3,10 @@ package com.coderpwh.cargo.application.service.impl;
 import com.coderpwh.cargo.application.assembler.command.CargoBookAssembler;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
 import com.coderpwh.cargo.application.service.CargoService;
+import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
+import com.coderpwh.cargo.domain.service.DomainCarGoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,18 +22,17 @@ public class CargoServiceImpl implements CargoService {
     @Resource
     private CargoBookAssembler cargoBookAssembler;
 
+    @Resource
+    private CarGoRepository carGoRepository;
+
 
     @Override
     public Boolean saveCarGo(CargoBookCommand command) {
 
         CargoBook domain = cargoBookAssembler.toEntity(command);
 
+        DomainCarGoService domainCarGoService = new DomainCarGoService(carGoRepository);
 
-      /*  Box domain = boxAssembler.toEntity(boxCommand);
-        BoxRecordService boxRecordService = new BoxRecordService(boxRepository);
-
-        return boxRecordService.save(domain);*/
-
-        return null;
+        return domainCarGoService.save(domain);
     }
 }
