@@ -1,12 +1,16 @@
 package com.coderpwh.cargo.domain.model;
 
+import lombok.Data;
+
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 /**
  * @author coderpwh
  * @date 2023/4/27 16:05
  */
-public class CargoBook {
+@Data
+public class CargoBook implements Serializable {
 
     /***
      *  发送者手机号
