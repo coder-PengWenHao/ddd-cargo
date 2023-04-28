@@ -1,12 +1,48 @@
 package com.coderpwh.cargo.domain.specification;
 
 
+import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
+import com.coderpwh.cargo.common.ddd.AbstractSpecification;
+import com.coderpwh.cargo.common.util.enums.DddEnum;
+import com.coderpwh.cargo.common.util.enums.SysReturnCode;
+import com.coderpwh.cargo.common.util.exception.BusinessException;
+import com.coderpwh.cargo.domain.model.CarGoRepository;
+import com.coderpwh.cargo.infrastructrue.persistence.entity.CargoBookDO;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 /**
  * @author coderpwh
  * @date 2023/4/28 9:55
  */
+@AllArgsConstructor
+@NoArgsConstructor
+public class CarGoSpecification extends AbstractSpecification<Integer> {
 
-public class CarGoSpecification {
+
+    private CarGoRepository carGoRepository;
+
+    @Override
+    public boolean isSatisfiedBy(Integer var1) {
+        return false;
+    }
+
+
+    /***
+     * 校验
+     * @param senderPhone
+     * @return
+     */
+    public boolean isGarGo(String senderPhone) {
+
+        CargoBookDO cargoBookDO = carGoRepository.getByName(senderPhone);
+
+        if (ObjectUtils.isEmpty(cargoBookDO)) {
+            return true;
+        } else {
+            throw new BusinessException(SysReturnCode.CarGo, DddEnum.APPLICATIN, "当前编码已存在");
+        }
+
+    }
 
 }

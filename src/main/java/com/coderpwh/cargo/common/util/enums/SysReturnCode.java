@@ -4,6 +4,7 @@ import lombok.Getter;
 
 /**
  * 系统返回状态
+ *
  * @since 2021-08-12
  */
 @Getter
@@ -13,12 +14,12 @@ public enum SysReturnCode {
     ACCOUNT_LOCKOUT(10002, "该账号被禁用"),
     NO_LOGIN_AUTHORITY(10005, "没有登录访问权限"),
     NO_INTERFACE_AUTHORITY(10006, "没有权限对此接口访问"),
-    CAPTCHA_EXPIRED(10010,"验证码过期"),
-    CAPTCHA_ERROR(10011,"验证码输入错误"),
-    OPERATION_UNSUCCESSFUL(10012,"此操作不成功"),
-    OPERATION_NOT_ROLE(10013,"用户未绑定角色"),
-    OPERATION_NOT_COMPANY(10014,"用户未绑定企业"),
-    SENSITIVE_WORDS(10015,"敏感词汇不能使用"),
+    CAPTCHA_EXPIRED(10010, "验证码过期"),
+    CAPTCHA_ERROR(10011, "验证码输入错误"),
+    OPERATION_UNSUCCESSFUL(10012, "此操作不成功"),
+    OPERATION_NOT_ROLE(10013, "用户未绑定角色"),
+    OPERATION_NOT_COMPANY(10014, "用户未绑定企业"),
+    SENSITIVE_WORDS(10015, "敏感词汇不能使用"),
     INVALID_TOKEN(10016, "无效的token"),
     ACCOUNT_LOGIN_OTHER_TERMINAL(10017, "同一账号在另一客户端登陆"),
     TOKEN_REFRESH_TIMEOUT(10018, "已过刷新日期"),
@@ -60,7 +61,13 @@ public enum SysReturnCode {
     EDGE_GATEWAY(2001, "硬件网关服务"),
     EDGE_INTEGRATION(2002, "集成服务"),
     EDGE_REGISTRY(2003, "设备注册服务"),
-    ASSET_BASE(2004, "资管服务")
+    ASSET_BASE(2004, "资管服务"),
+
+
+    // CarGo
+
+    CarGo(3001, "CarGo服务"),
+
     ;
 
     private final Integer code;
