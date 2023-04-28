@@ -2,7 +2,6 @@ package com.coderpwh.cargo.domain.model;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -15,7 +14,6 @@ public class CargoBook implements Serializable {
     /***
      *  发送者手机号
      */
-    @NotBlank(message = "手机号不能为空")
     private String senderPhone;
 
     /***
@@ -26,13 +24,13 @@ public class CargoBook implements Serializable {
     /***
      *编码
      */
-    @NotBlank(message = "编码")
-    private String originLocationCode;
+
+    private String originlocationCode;
 
     /**
      * 编码描述
      */
-    private String destinationLocationCode;
+    private String destinationlocationCode;
 
 
 }

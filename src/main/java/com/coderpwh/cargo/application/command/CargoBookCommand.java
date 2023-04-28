@@ -27,13 +27,13 @@ public class CargoBookCommand implements Serializable {
     /***
      *编码
      */
-    @NotBlank(message = "编码")
-    private String originLocationCode;
+    @NotBlank(message = "编码不能为空")
+    private String originlocationCode;
 
     /**
      * 编码描述
      */
-    private String destinationLocationCode;
+    private String destinationlocationCode;
 
 
 }

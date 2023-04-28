@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author coderpwh
@@ -31,6 +32,9 @@ public class CarGoRepositoryImpl extends ServiceImpl<CargoBookDOMapper, CargoBoo
     @Override
     public boolean save(CargoBook cargoBook) {
         CargoBookDO cargoBookDO = cargoBookConverter.toDTO(cargoBook);
+        int rs = (int) ((Math.random() * 9 + 1) * Math.pow(10, 5 - 1));
+        String id = "CARGO-NO-" + rs;
+        cargoBookDO.setId(id);
         return super.save(cargoBookDO);
     }
 
