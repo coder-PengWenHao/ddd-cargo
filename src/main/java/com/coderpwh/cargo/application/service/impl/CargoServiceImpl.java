@@ -28,9 +28,8 @@ public class CargoServiceImpl implements CargoService {
 
     @Override
     public Boolean saveCarGo(CargoBookCommand command) {
-
         CargoBook domain = cargoBookAssembler.toEntity(command);
-
+        // 领域层
         DomainCarGoService domainCarGoService = new DomainCarGoService(carGoRepository);
 
         return domainCarGoService.save(domain);
