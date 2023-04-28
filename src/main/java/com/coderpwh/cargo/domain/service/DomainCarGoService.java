@@ -8,10 +8,7 @@ import com.coderpwh.cargo.domain.model.CargoBook;
  * @date 2023/4/27 16:27
  */
 public class DomainCarGoService {
-
-
     private CarGoRepository carGoRepository;
-
 
     /***
      * 新增时领域函数
@@ -20,7 +17,6 @@ public class DomainCarGoService {
     public DomainCarGoService(CarGoRepository repository) {
         this.carGoRepository = repository;
     }
-
 
     /***
      *  保存
