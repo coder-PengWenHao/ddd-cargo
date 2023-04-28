@@ -7,6 +7,7 @@ import com.coderpwh.cargo.common.util.enums.DddEnum;
 import com.coderpwh.cargo.common.util.enums.SysReturnCode;
 import com.coderpwh.cargo.common.util.exception.BusinessException;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
+import com.coderpwh.cargo.domain.model.CargoBook;
 import com.coderpwh.cargo.infrastructrue.persistence.entity.CargoBookDO;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -19,14 +20,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CarGoSpecification extends AbstractSpecification<Integer> {
 
-
     private CarGoRepository carGoRepository;
 
     @Override
     public boolean isSatisfiedBy(Integer var1) {
         return false;
     }
-
 
     /***
      * 校验
@@ -35,9 +34,9 @@ public class CarGoSpecification extends AbstractSpecification<Integer> {
      */
     public boolean isGarGo(String senderPhone) {
 
-        CargoBookDO cargoBookDO = carGoRepository.getByName(senderPhone);
+        CargoBook cargoBook = carGoRepository.getBySenderPhone(senderPhone);
 
-        if (ObjectUtils.isEmpty(cargoBookDO)) {
+        if (ObjectUtils.isEmpty(cargoBook)) {
             return true;
         } else {
             throw new BusinessException(SysReturnCode.CarGo, DddEnum.APPLICATIN, "当前编码已存在");

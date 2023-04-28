@@ -52,30 +52,23 @@ public interface CarGoRepository extends IService<CargoBookDO> {
      * @param id id
      * @return 查询后的对象
      */
-    CargoBookDO getById(Integer id);
+    CargoBook getById(Integer id);
+
 
     /**
-     * 根据ids查询对象集合
-     *
-     * @param ids ids
-     * @return 查询后的对象集合
-     */
-    List<CargoBookDO> getByIds(List<Integer> ids);
-
-    /**
-     * 删除包厢
+     * 删除
      *
      * @param id
      * @return
      */
     boolean del(Integer id);
 
-    /**
-     * 根据名称查询对象
-     *
-     * @param name 包厢名称
-     * @return 查询后的对象
+
+    /***
+     * 根据senderPhone查询
+     * @param senderPhone
+     * @return
      */
-    CargoBookDO getByName(String name);
+    CargoBook getBySenderPhone(String senderPhone);
 
 }

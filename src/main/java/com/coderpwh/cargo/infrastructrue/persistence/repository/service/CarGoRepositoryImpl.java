@@ -1,5 +1,6 @@
 package com.coderpwh.cargo.infrastructrue.persistence.repository.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
@@ -18,7 +19,6 @@ import java.util.List;
  */
 @Service
 public class CarGoRepositoryImpl extends ServiceImpl<CargoBookDOMapper, CargoBookDO> implements CarGoRepository {
-
 
     @Resource
     private CargoBookConverter cargoBookConverter;
@@ -45,22 +45,26 @@ public class CarGoRepositoryImpl extends ServiceImpl<CargoBookDOMapper, CargoBoo
     }
 
     @Override
-    public CargoBookDO getById(Integer id) {
-        return null;
+    public CargoBook getById(Integer id) {
+        CargoBookDO cargoBookDO = super.getById(id);
+        CargoBook cargoBook = cargoBookConverter.toEntity(cargoBookDO);
+        return cargoBook;
     }
 
-    @Override
-    public List<CargoBookDO> getByIds(List<Integer> ids) {
-        return null;
-    }
 
     @Override
     public boolean del(Integer id) {
         return false;
     }
 
+
     @Override
-    public CargoBookDO getByName(String name) {
-        return null;
+    public CargoBook getBySenderPhone(String senderPhone) {
+        LambdaQueryWrapper<CargoBookDO> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(CargoBookDO::getSenderPhone, senderPhone);
+        CargoBookDO cargoBookDO = this.getOne(queryWrapper);
+
+        CargoBook cargoBook = cargoBookConverter.toEntity(cargoBookDO);
+        return cargoBook;
     }
 }
