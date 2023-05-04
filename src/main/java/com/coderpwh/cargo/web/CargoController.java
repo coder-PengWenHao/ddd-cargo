@@ -1,5 +1,6 @@
 package com.coderpwh.cargo.web;
 
+import com.coderpwh.cargo.application.command.CarGoBookQuery;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
 import com.coderpwh.cargo.application.service.CargoService;
 import com.coderpwh.cargo.common.util.result.Result;
@@ -33,6 +34,12 @@ public class CargoController {
     public Result saveCarGo(@RequestBody @Valid CargoBookCommand command) {
         Boolean flag = cargoService.saveCarGo(command);
         return Result.update(flag);
+    }
+
+
+    @RequestMapping(value = "/query", method = RequestMethod.POST)
+    public Result queryCargoBook(@RequestBody @Valid CarGoBookQuery query) {
+        return Result.ok(cargoService.queryCargoBook(query));
     }
 
 

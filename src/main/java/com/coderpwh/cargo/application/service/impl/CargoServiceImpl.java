@@ -1,6 +1,7 @@
 package com.coderpwh.cargo.application.service.impl;
 
 import com.coderpwh.cargo.application.assembler.command.CargoBookAssembler;
+import com.coderpwh.cargo.application.command.CarGoBookQuery;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
 import com.coderpwh.cargo.application.service.CargoService;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
@@ -38,5 +39,10 @@ public class CargoServiceImpl implements CargoService {
         DomainCarGoService domainCarGoService = new DomainCarGoService(carGoRepository);
 
         return domainCarGoService.save(domain);
+    }
+
+    @Override
+    public String queryCargoBook(CarGoBookQuery query) {
+        return null;
     }
 }

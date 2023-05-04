@@ -1,5 +1,6 @@
 package com.coderpwh.cargo.application.service;
 
+import com.coderpwh.cargo.application.command.CarGoBookQuery;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
 
 /**
@@ -18,4 +19,11 @@ public interface CargoService {
      */
     Boolean saveCarGo(CargoBookCommand command);
 
+
+    /***
+     * 查询
+     * @param query
+     * @return
+     */
+    String queryCargoBook(CarGoBookQuery query);
 }
