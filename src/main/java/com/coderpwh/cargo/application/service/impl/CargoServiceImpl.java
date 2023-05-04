@@ -63,7 +63,6 @@ public class CargoServiceImpl implements CargoService {
      */
     @Override
     public CarGoBookVO queryCargoBook(String senderPhone) {
-
         // 校验
         CarGoSpecification carGoSpecification = new CarGoSpecification(carGoRepository);
         carGoSpecification.isSenderPhone(senderPhone);
