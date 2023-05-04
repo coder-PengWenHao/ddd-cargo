@@ -18,11 +18,22 @@ import javax.annotation.Resource;
 public class DomainCarGoService {
     private CarGoRepository carGoRepository;
 
-    @Resource
     private CargoBookDTOAssembler cargoBookDTOAssembler;
 
-    @Resource
     private CargoBookVOAssembler cargoBookVOAssembler;
+
+
+    /***
+     * 新增时调用
+     * @param repository
+     * @param cargoBookDTOAssembler
+     * @param cargoBookVOAssembler
+     */
+    public DomainCarGoService(CarGoRepository repository, CargoBookDTOAssembler cargoBookDTOAssembler, CargoBookVOAssembler cargoBookVOAssembler) {
+        this.carGoRepository = repository;
+        this.cargoBookDTOAssembler = cargoBookDTOAssembler;
+        this.cargoBookVOAssembler = cargoBookVOAssembler;
+    }
 
 
     /***

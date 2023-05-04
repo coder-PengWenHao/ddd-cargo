@@ -12,6 +12,8 @@ import com.coderpwh.cargo.infrastructrue.persistence.entity.CargoBookDO;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.lang.annotation.Retention;
+
 /**
  * @author coderpwh
  * @date 2023/4/28 9:55
@@ -40,6 +42,22 @@ public class CarGoSpecification extends AbstractSpecification<Integer> {
             return true;
         } else {
             throw new BusinessException(SysReturnCode.CarGo, DddEnum.APPLICATIN, "当前编码已存在");
+        }
+
+    }
+
+
+    /***
+     * 通过senderPhone校验
+     * @param senderPhone
+     */
+    public Boolean isSenderPhone(String senderPhone) {
+        CargoBook cargoBook = carGoRepository.getBySenderPhone(senderPhone);
+
+        if (ObjectUtils.isEmpty(cargoBook)) {
+            throw new BusinessException(SysReturnCode.CarGo, DddEnum.APPLICATIN, "当前编码不不存在");
+        } else {
+            return true;
         }
 
     }

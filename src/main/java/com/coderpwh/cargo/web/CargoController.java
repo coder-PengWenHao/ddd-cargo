@@ -38,8 +38,8 @@ public class CargoController {
 
 
     @RequestMapping(value = "/query", method = RequestMethod.POST)
-    public Result queryCargoBook(@RequestBody String senderPhone) {
-        return Result.ok(cargoService.queryCargoBook(senderPhone));
+    public Result queryCargoBook(@RequestBody CarGoBookQuery query) {
+        return Result.ok(cargoService.queryCargoBook(query.getSenderPhone()));
     }
 
 

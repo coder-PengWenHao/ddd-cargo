@@ -1,7 +1,8 @@
 package com.coderpwh.cargo.application.service.impl;
 
 import com.coderpwh.cargo.application.assembler.command.CargoBookAssembler;
-import com.coderpwh.cargo.application.command.CarGoBookQuery;
+import com.coderpwh.cargo.application.assembler.domain.CargoBookDTOAssembler;
+import com.coderpwh.cargo.application.assembler.vo.CargoBookVOAssembler;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
 import com.coderpwh.cargo.application.service.CargoService;
 import com.coderpwh.cargo.application.vo.CarGoBookVO;
@@ -9,8 +10,6 @@ import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
 import com.coderpwh.cargo.domain.service.DomainCarGoService;
 import com.coderpwh.cargo.domain.specification.CarGoSpecification;
-import org.checkerframework.checker.units.qual.C;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,6 +26,12 @@ public class CargoServiceImpl implements CargoService {
 
     @Resource
     private CarGoRepository carGoRepository;
+
+    @Resource
+    private CargoBookDTOAssembler cargoBookDTOAssembler;
+
+    @Resource
+    private CargoBookVOAssembler cargoBookVOAssembler;
 
 
     /**
@@ -58,12 +63,13 @@ public class CargoServiceImpl implements CargoService {
      */
     @Override
     public CarGoBookVO queryCargoBook(String senderPhone) {
+
         // 校验
-        CarGoSpecification carGoSpecification = new CarGoSpecification();
-        carGoSpecification.isGarGo(senderPhone);
+        CarGoSpecification carGoSpecification = new CarGoSpecification(carGoRepository);
+        carGoSpecification.isSenderPhone(senderPhone);
 
         // 领域层
-        DomainCarGoService domainCarGoService = new DomainCarGoService(carGoRepository);
+        DomainCarGoService domainCarGoService = new DomainCarGoService(carGoRepository, cargoBookDTOAssembler, cargoBookVOAssembler);
 
         // 查询
         CarGoBookVO carGoBookVO = domainCarGoService.queryCargoBook(senderPhone);
