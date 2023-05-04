@@ -1,8 +1,13 @@
 package com.coderpwh.cargo.domain.service;
 
+import com.coderpwh.cargo.application.assembler.domain.CargoBookDTOAssembler;
+import com.coderpwh.cargo.application.assembler.vo.CargoBookVOAssembler;
+import com.coderpwh.cargo.application.dto.CargoBookDTO;
 import com.coderpwh.cargo.application.vo.CarGoBookVO;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
+
+import javax.annotation.Resource;
 
 /**
  * 领域层
@@ -12,6 +17,13 @@ import com.coderpwh.cargo.domain.model.CargoBook;
  */
 public class DomainCarGoService {
     private CarGoRepository carGoRepository;
+
+    @Resource
+    private CargoBookDTOAssembler cargoBookDTOAssembler;
+
+    @Resource
+    private CargoBookVOAssembler cargoBookVOAssembler;
+
 
     /***
      * 新增时领域函数
@@ -30,11 +42,21 @@ public class DomainCarGoService {
         return carGoRepository.save(domain);
     }
 
+
+    /***
+     * 查询
+     * @param senderPhone
+     * @return
+     */
     public CarGoBookVO queryCargoBook(String senderPhone) {
 
         CargoBook cargoBook = carGoRepository.getBySenderPhone(senderPhone);
 
-        return null;
+        CargoBookDTO cargoBookDTO = cargoBookDTOAssembler.toDTO(cargoBook);
+
+        CarGoBookVO carGoBookVO = cargoBookVOAssembler.toDTO(cargoBookDTO);
+
+        return carGoBookVO;
     }
 
 }

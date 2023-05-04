@@ -58,11 +58,16 @@ public class CargoServiceImpl implements CargoService {
      */
     @Override
     public CarGoBookVO queryCargoBook(String senderPhone) {
-
+        // 校验
         CarGoSpecification carGoSpecification = new CarGoSpecification();
         carGoSpecification.isGarGo(senderPhone);
 
+        // 领域层
+        DomainCarGoService domainCarGoService = new DomainCarGoService(carGoRepository);
 
-        return null;
+        // 查询
+        CarGoBookVO carGoBookVO = domainCarGoService.queryCargoBook(senderPhone);
+
+        return carGoBookVO;
     }
 }
