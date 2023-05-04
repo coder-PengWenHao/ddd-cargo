@@ -2,6 +2,7 @@ package com.coderpwh.cargo.application.service;
 
 import com.coderpwh.cargo.application.command.CarGoBookQuery;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
+import com.coderpwh.cargo.application.vo.CarGoBookVO;
 
 /**
  * CarGo
@@ -21,9 +22,9 @@ public interface CargoService {
 
 
     /***
-     * 查询
+     * 查询详情
      * @param query
      * @return
      */
-    String queryCargoBook(CarGoBookQuery query);
+    CarGoBookVO queryCargoBook(String senderPhone);
 }

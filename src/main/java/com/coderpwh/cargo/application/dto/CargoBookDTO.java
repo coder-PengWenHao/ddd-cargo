@@ -1,4 +1,4 @@
-package com.coderpwh.cargo.domain.model;
+package com.coderpwh.cargo.application.dto;
 
 import lombok.Data;
 
@@ -6,14 +6,13 @@ import java.io.Serializable;
 
 /**
  * @author coderpwh
- * @date 2023/4/27 16:05
+ * @date 2023/5/4 14:01
  */
 @Data
-public class CargoBook implements Serializable {
+public class CargoBookDTO implements Serializable {
 
 
     private String id;
-
 
     /***
      *  发送者手机号
@@ -35,6 +34,5 @@ public class CargoBook implements Serializable {
      * 编码描述
      */
     private String destinationlocationCode;
-
 
 }

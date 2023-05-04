@@ -4,10 +4,12 @@ import com.coderpwh.cargo.application.assembler.command.CargoBookAssembler;
 import com.coderpwh.cargo.application.command.CarGoBookQuery;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
 import com.coderpwh.cargo.application.service.CargoService;
+import com.coderpwh.cargo.application.vo.CarGoBookVO;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
 import com.coderpwh.cargo.domain.service.DomainCarGoService;
 import com.coderpwh.cargo.domain.specification.CarGoSpecification;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,12 @@ public class CargoServiceImpl implements CargoService {
     private CarGoRepository carGoRepository;
 
 
+    /**
+     * 新增
+     *
+     * @param command
+     * @return
+     */
     @Override
     public Boolean saveCarGo(CargoBookCommand command) {
         CargoBook domain = cargoBookAssembler.toEntity(command);
@@ -41,8 +49,20 @@ public class CargoServiceImpl implements CargoService {
         return domainCarGoService.save(domain);
     }
 
+
+    /**
+     * 查询详情
+     *
+     * @param senderPhone
+     * @return
+     */
     @Override
-    public String queryCargoBook(CarGoBookQuery query) {
+    public CarGoBookVO queryCargoBook(String senderPhone) {
+
+        CarGoSpecification carGoSpecification = new CarGoSpecification();
+        carGoSpecification.isGarGo(senderPhone);
+
+
         return null;
     }
 }
