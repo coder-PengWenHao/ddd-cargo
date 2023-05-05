@@ -37,10 +37,17 @@ public class CargoController {
     }
 
 
+    /**
+     * 详情查询
+     *
+     * @param query
+     * @return
+     */
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     public Result queryCargoBook(@RequestBody CarGoBookQuery query) {
         return Result.ok(cargoService.queryCargoBook(query.getSenderPhone()));
     }
+
 
 
 }
