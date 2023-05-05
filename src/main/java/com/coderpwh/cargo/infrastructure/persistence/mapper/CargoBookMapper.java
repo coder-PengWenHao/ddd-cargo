@@ -1,8 +1,11 @@
 package com.coderpwh.cargo.infrastructure.persistence.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author coderpwh
@@ -10,5 +13,14 @@ import org.apache.ibatis.annotations.Mapper;
  */
 
 @Mapper
-public interface CargoBookDOMapper extends BaseMapper<CargoBookDO> {
+public interface CargoBookMapper extends BaseMapper<CargoBookDO> {
+
+
+    /***
+     * 分页查询
+     * @param query
+     * @return
+     */
+    List<CargoBookDO> queryByPage(CargoBookPageQuery query);
+
 }

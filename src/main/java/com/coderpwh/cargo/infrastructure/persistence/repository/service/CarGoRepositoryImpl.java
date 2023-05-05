@@ -7,7 +7,7 @@ import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
 import com.coderpwh.cargo.infrastructure.persistence.converter.CargoBookConverter;
 import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
-import com.coderpwh.cargo.infrastructure.persistence.mapper.CargoBookDOMapper;
+import com.coderpwh.cargo.infrastructure.persistence.mapper.CargoBookMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,10 +18,15 @@ import java.util.List;
  * @date 2023/4/27 17:38
  */
 @Service
-public class CarGoRepositoryImpl extends ServiceImpl<CargoBookDOMapper, CargoBookDO> implements CarGoRepository {
+public class CarGoRepositoryImpl extends ServiceImpl<CargoBookMapper, CargoBookDO> implements CarGoRepository {
 
     @Resource
     private CargoBookConverter cargoBookConverter;
+
+
+    @Resource
+    private CargoBookMapper cargoBookMapper;
+
 
     @Override
     public boolean saveBatch(List<CargoBook> list) {
@@ -84,7 +89,12 @@ public class CarGoRepositoryImpl extends ServiceImpl<CargoBookDOMapper, CargoBoo
      */
     @Override
     public List<CargoBook> queryByPage(CargoBookPageQuery query) {
-        return null;
+
+        List<CargoBookDO> list = cargoBookMapper.queryByPage(query);
+
+        List<CargoBook> cargoBookList = cargoBookConverter.toEntity(list);
+
+        return cargoBookList;
     }
 
 }
