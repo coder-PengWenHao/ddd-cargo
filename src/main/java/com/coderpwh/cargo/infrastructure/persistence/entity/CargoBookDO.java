@@ -1,4 +1,4 @@
-package com.coderpwh.cargo.infrastructrue.persistence.entity;
+package com.coderpwh.cargo.infrastructure.persistence.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

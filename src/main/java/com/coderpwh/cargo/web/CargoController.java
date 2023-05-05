@@ -2,7 +2,9 @@ package com.coderpwh.cargo.web;
 
 import com.coderpwh.cargo.application.command.CarGoBookQuery;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
+import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.application.service.CargoService;
+import com.coderpwh.cargo.common.database.PageUtils;
 import com.coderpwh.cargo.common.util.result.Result;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +50,17 @@ public class CargoController {
         return Result.ok(cargoService.queryCargoBook(query.getSenderPhone()));
     }
 
+
+    /**
+     * 分页查询
+     *
+     * @return
+     */
+    @RequestMapping(value = "/page", method = RequestMethod.GET)
+    public Result queryCargoBookPage(CargoBookPageQuery query) {
+        PageUtils page = cargoService.queryCargoBookPage(query);
+        return Result.ok(page);
+    }
 
 
 }

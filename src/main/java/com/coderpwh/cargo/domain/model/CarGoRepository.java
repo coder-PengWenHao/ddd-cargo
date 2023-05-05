@@ -1,7 +1,8 @@
 package com.coderpwh.cargo.domain.model;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.coderpwh.cargo.infrastructrue.persistence.entity.CargoBookDO;
+import com.coderpwh.cargo.application.command.CargoBookPageQuery;
+import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
 
 import java.util.List;
 
@@ -70,5 +71,13 @@ public interface CarGoRepository extends IService<CargoBookDO> {
      * @return
      */
     CargoBook getBySenderPhone(String senderPhone);
+
+
+    /***
+     * 分页查询
+     * @param query
+     * @return
+     */
+    List<CargoBook> queryByPage(CargoBookPageQuery query);
 
 }

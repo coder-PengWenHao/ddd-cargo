@@ -4,8 +4,10 @@ import com.coderpwh.cargo.application.assembler.command.CargoBookAssembler;
 import com.coderpwh.cargo.application.assembler.domain.CargoBookDTOAssembler;
 import com.coderpwh.cargo.application.assembler.vo.CargoBookVOAssembler;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
+import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.application.service.CargoService;
 import com.coderpwh.cargo.application.vo.CarGoBookVO;
+import com.coderpwh.cargo.common.database.PageUtils;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
 import com.coderpwh.cargo.domain.service.DomainCarGoService;
@@ -75,4 +77,25 @@ public class CargoServiceImpl implements CargoService {
 
         return carGoBookVO;
     }
+
+
+    /**
+     * 分页查询
+     *
+     * @param query
+     * @return
+     */
+    @Override
+    public PageUtils queryCargoBookPage(CargoBookPageQuery query) {
+
+        // 领域层
+        DomainCarGoService domainCarGoService = new DomainCarGoService(carGoRepository, cargoBookDTOAssembler, cargoBookVOAssembler);
+
+        // 分页查询
+        PageUtils pageUtils = domainCarGoService.queryCargoBookPage(query);
+
+        return pageUtils;
+    }
+
+
 }

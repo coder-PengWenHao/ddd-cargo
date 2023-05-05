@@ -8,11 +8,8 @@ import com.coderpwh.cargo.common.util.enums.SysReturnCode;
 import com.coderpwh.cargo.common.util.exception.BusinessException;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
-import com.coderpwh.cargo.infrastructrue.persistence.entity.CargoBookDO;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
-import java.lang.annotation.Retention;
 
 /**
  * @author coderpwh

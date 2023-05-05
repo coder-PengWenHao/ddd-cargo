@@ -1,18 +1,17 @@
-package com.coderpwh.cargo.infrastructrue.persistence.repository.service;
+package com.coderpwh.cargo.infrastructure.persistence.repository.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
-import com.coderpwh.cargo.infrastructrue.persistence.converter.CargoBookConverter;
-import com.coderpwh.cargo.infrastructrue.persistence.entity.CargoBookDO;
-import com.coderpwh.cargo.infrastructrue.persistence.mapper.CargoBookDOMapper;
+import com.coderpwh.cargo.infrastructure.persistence.converter.CargoBookConverter;
+import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
+import com.coderpwh.cargo.infrastructure.persistence.mapper.CargoBookDOMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Collection;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @author coderpwh
@@ -62,6 +61,11 @@ public class CarGoRepositoryImpl extends ServiceImpl<CargoBookDOMapper, CargoBoo
     }
 
 
+    /***
+     *  通过senderPhone查询
+     * @param senderPhone
+     * @return
+     */
     @Override
     public CargoBook getBySenderPhone(String senderPhone) {
         LambdaQueryWrapper<CargoBookDO> queryWrapper = new LambdaQueryWrapper<>();
@@ -71,4 +75,16 @@ public class CarGoRepositoryImpl extends ServiceImpl<CargoBookDOMapper, CargoBoo
         CargoBook cargoBook = cargoBookConverter.toEntity(cargoBookDO);
         return cargoBook;
     }
+
+
+    /***
+     * 分页查询
+     * @param query
+     * @return
+     */
+    @Override
+    public List<CargoBook> queryByPage(CargoBookPageQuery query) {
+        return null;
+    }
+
 }

@@ -2,12 +2,15 @@ package com.coderpwh.cargo.domain.service;
 
 import com.coderpwh.cargo.application.assembler.domain.CargoBookDTOAssembler;
 import com.coderpwh.cargo.application.assembler.vo.CargoBookVOAssembler;
+import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.application.dto.CargoBookDTO;
 import com.coderpwh.cargo.application.vo.CarGoBookVO;
+import com.coderpwh.cargo.common.database.PageUtils;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 领域层
@@ -70,4 +73,25 @@ public class DomainCarGoService {
         return carGoBookVO;
     }
 
+
+    /***
+     * 分页查询
+     * @param query
+     * @return
+     */
+    public PageUtils queryCargoBookPage(CargoBookPageQuery query) {
+
+        PageUtils<CarGoBookVO> pageUtils = new PageUtils<>();
+        pageUtils.setPageNum(query.getPageNum());
+        pageUtils.setPageSize(query.getPageSize());
+
+        List<CargoBook> list = carGoRepository.queryByPage(query);
+
+        // 转换
+        List<CargoBookDTO> cargoBookDTOList = cargoBookDTOAssembler.toDTO(list);
+        List<CarGoBookVO> carGoBookVOList = cargoBookVOAssembler.toDTO(cargoBookDTOList);
+
+        pageUtils.setList(carGoBookVOList);
+        return pageUtils;
+    }
 }

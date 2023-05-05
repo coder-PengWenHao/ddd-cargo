@@ -1,7 +1,7 @@
-package com.coderpwh.cargo.infrastructrue.persistence.mapper;
+package com.coderpwh.cargo.infrastructure.persistence.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.coderpwh.cargo.infrastructrue.persistence.entity.CargoBookDO;
+import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

@@ -2,7 +2,9 @@ package com.coderpwh.cargo.application.service;
 
 import com.coderpwh.cargo.application.command.CarGoBookQuery;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
+import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.application.vo.CarGoBookVO;
+import com.coderpwh.cargo.common.database.PageUtils;
 
 /**
  * CarGo
@@ -23,8 +25,18 @@ public interface CargoService {
 
     /***
      * 查询详情
-     * @param query
+     * @param senderPhone
      * @return
      */
     CarGoBookVO queryCargoBook(String senderPhone);
+
+
+    /**
+     * 分页查询
+     *
+     * @param query
+     * @return
+     */
+    PageUtils queryCargoBookPage(CargoBookPageQuery query);
+
 }
