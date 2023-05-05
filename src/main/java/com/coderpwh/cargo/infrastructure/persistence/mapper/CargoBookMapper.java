@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,6 +22,6 @@ public interface CargoBookMapper extends BaseMapper<CargoBookDO> {
      * @param query
      * @return
      */
-    List<CargoBookDO> queryByPage(CargoBookPageQuery query);
+    List<CargoBookDO> queryByPage(@Param("query") CargoBookPageQuery query);
 
 }
