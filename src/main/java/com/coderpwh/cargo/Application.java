@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author coderpwh
  */
-@SpringBootApplication
-@MapperScan(basePackages = "com.coderpwh.cargo.infrastructure.persistence.mapper.*")
+@SpringBootApplication(scanBasePackages ={"com.coderpwh"})
+//@MapperScan(basePackages = "com.coderpwh.cargo.infrastructure.persistence.mapper.*")
 public class Application {
 
     public static void main(String[] args) {

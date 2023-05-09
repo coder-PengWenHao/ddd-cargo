@@ -90,6 +90,7 @@ public class CarGoRepositoryImpl extends ServiceImpl<CargoBookMapper, CargoBookD
     @Override
     public List<CargoBook> queryByPage(CargoBookPageQuery query) {
 
+
         List<CargoBookDO> list = cargoBookMapper.queryByPage(query);
 
         List<CargoBook> cargoBookList = cargoBookConverter.toEntity(list);
