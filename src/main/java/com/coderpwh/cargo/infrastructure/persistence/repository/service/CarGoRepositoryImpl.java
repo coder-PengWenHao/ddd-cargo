@@ -8,6 +8,7 @@ import com.coderpwh.cargo.domain.model.CargoBook;
 import com.coderpwh.cargo.infrastructure.persistence.converter.CargoBookConverter;
 import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
 import com.coderpwh.cargo.infrastructure.persistence.mapper.CargoBookMapper;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -90,7 +91,7 @@ public class CarGoRepositoryImpl extends ServiceImpl<CargoBookMapper, CargoBookD
     @Override
     public List<CargoBook> queryByPage(CargoBookPageQuery query) {
 
-
+        PageHelper.startPage(query.getPageNum(), query.getPageSize());
         List<CargoBookDO> list = cargoBookMapper.queryByPage(query);
 
         List<CargoBook> cargoBookList = cargoBookConverter.toEntity(list);
