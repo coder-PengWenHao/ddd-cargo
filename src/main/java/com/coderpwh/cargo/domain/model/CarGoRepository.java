@@ -2,6 +2,7 @@ package com.coderpwh.cargo.domain.model;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.coderpwh.cargo.application.command.CargoBookPageQuery;
+import com.coderpwh.cargo.common.database.PageUtils;
 import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
 
 import java.util.List;
@@ -78,6 +79,6 @@ public interface CarGoRepository extends IService<CargoBookDO> {
      * @param query
      * @return
      */
-    List<CargoBook> queryByPage(CargoBookPageQuery query);
+    PageUtils queryByPage(CargoBookPageQuery query);
 
 }

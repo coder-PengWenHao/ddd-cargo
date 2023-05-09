@@ -5,9 +5,11 @@ import com.coderpwh.cargo.application.assembler.vo.CargoBookVOAssembler;
 import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.application.dto.CargoBookDTO;
 import com.coderpwh.cargo.application.vo.CarGoBookVO;
+import com.coderpwh.cargo.common.database.PageTransformUtil;
 import com.coderpwh.cargo.common.database.PageUtils;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
+import com.github.pagehelper.PageHelper;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -81,13 +83,14 @@ public class DomainCarGoService {
      */
     public PageUtils queryCargoBookPage(CargoBookPageQuery query) {
 
-        PageUtils<CarGoBookVO> pageUtils = new PageUtils<>();
-        pageUtils.setPageNum(query.getPageNum());
-        pageUtils.setPageSize(query.getPageSize());
+        PageHelper.startPage(query.getPageNum(), query.getPageSize());
+        PageUtils pageUtils = carGoRepository.queryByPage(query);
 
-        List<CargoBook> list = carGoRepository.queryByPage(query);
+
+        List<CargoBook> list = pageUtils.getList();
 
         // 转换
+
         List<CargoBookDTO> cargoBookDTOList = cargoBookDTOAssembler.toDTO(list);
         List<CarGoBookVO> carGoBookVOList = cargoBookVOAssembler.toDTO(cargoBookDTOList);
 

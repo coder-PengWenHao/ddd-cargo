@@ -3,6 +3,8 @@ package com.coderpwh.cargo.infrastructure.persistence.repository.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.coderpwh.cargo.application.command.CargoBookPageQuery;
+import com.coderpwh.cargo.common.database.PageTransformUtil;
+import com.coderpwh.cargo.common.database.PageUtils;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
 import com.coderpwh.cargo.infrastructure.persistence.converter.CargoBookConverter;
@@ -89,14 +91,15 @@ public class CarGoRepositoryImpl extends ServiceImpl<CargoBookMapper, CargoBookD
      * @return
      */
     @Override
-    public List<CargoBook> queryByPage(CargoBookPageQuery query) {
+    public PageUtils queryByPage(CargoBookPageQuery query) {
 
         PageHelper.startPage(query.getPageNum(), query.getPageSize());
         List<CargoBookDO> list = cargoBookMapper.queryByPage(query);
 
         List<CargoBook> cargoBookList = cargoBookConverter.toEntity(list);
-
-        return cargoBookList;
+        PageUtils page = PageTransformUtil.transform(list);
+        page.setList(cargoBookList);
+        return page;
     }
 
 }
