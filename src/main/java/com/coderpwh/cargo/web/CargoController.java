@@ -50,7 +50,6 @@ public class CargoController {
         return Result.ok(cargoService.queryCargoBook(query.getSenderPhone()));
     }
 
-
     /**
      * 分页查询
      *
