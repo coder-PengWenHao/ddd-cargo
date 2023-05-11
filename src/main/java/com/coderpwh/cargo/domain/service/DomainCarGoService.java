@@ -82,15 +82,10 @@ public class DomainCarGoService {
      * @return
      */
     public PageUtils queryCargoBookPage(CargoBookPageQuery query) {
-
-        PageHelper.startPage(query.getPageNum(), query.getPageSize());
         PageUtils pageUtils = carGoRepository.queryByPage(query);
 
-
         List<CargoBook> list = pageUtils.getList();
-
         // 转换
-
         List<CargoBookDTO> cargoBookDTOList = cargoBookDTOAssembler.toDTO(list);
         List<CarGoBookVO> carGoBookVOList = cargoBookVOAssembler.toDTO(cargoBookDTOList);
 

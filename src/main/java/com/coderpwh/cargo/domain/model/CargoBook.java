@@ -1,8 +1,10 @@
 package com.coderpwh.cargo.domain.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author coderpwh
@@ -35,6 +37,13 @@ public class CargoBook implements Serializable {
      * 编码描述
      */
     private String destinationlocationCode;
+
+
+
+    private Date createdAt;
+
+
+    private Date updatedAt;
 
 
 }
