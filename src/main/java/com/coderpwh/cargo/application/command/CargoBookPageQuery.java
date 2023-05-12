@@ -1,6 +1,7 @@
 package com.coderpwh.cargo.application.command;
 
-import com.coderpwh.cargo.common.database.BasePage;
+
+import com.coderpwh.member.common.database.BasePage;
 import lombok.Data;
 
 /**

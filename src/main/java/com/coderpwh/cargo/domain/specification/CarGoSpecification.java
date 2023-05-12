@@ -2,12 +2,12 @@ package com.coderpwh.cargo.domain.specification;
 
 
 import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
-import com.coderpwh.cargo.common.ddd.AbstractSpecification;
-import com.coderpwh.cargo.common.util.enums.DddEnum;
-import com.coderpwh.cargo.common.util.enums.SysReturnCode;
-import com.coderpwh.cargo.common.util.exception.BusinessException;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
+import com.coderpwh.member.common.ddd.AbstractSpecification;
+import com.coderpwh.member.common.util.enums.DddEnum;
+import com.coderpwh.member.common.util.enums.SysReturnCode;
+import com.coderpwh.member.common.util.exception.BusinessException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 

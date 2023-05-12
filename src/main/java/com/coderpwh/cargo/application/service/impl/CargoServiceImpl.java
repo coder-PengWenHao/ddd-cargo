@@ -7,11 +7,11 @@ import com.coderpwh.cargo.application.command.CargoBookCommand;
 import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.application.service.CargoService;
 import com.coderpwh.cargo.application.vo.CarGoBookVO;
-import com.coderpwh.cargo.common.database.PageUtils;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
 import com.coderpwh.cargo.domain.service.DomainCarGoService;
 import com.coderpwh.cargo.domain.specification.CarGoSpecification;
+import com.coderpwh.member.common.database.PageUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

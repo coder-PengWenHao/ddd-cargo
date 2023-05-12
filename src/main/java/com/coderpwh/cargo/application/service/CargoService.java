@@ -4,7 +4,7 @@ import com.coderpwh.cargo.application.command.CarGoBookQuery;
 import com.coderpwh.cargo.application.command.CargoBookCommand;
 import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.application.vo.CarGoBookVO;
-import com.coderpwh.cargo.common.database.PageUtils;
+import com.coderpwh.member.common.database.PageUtils;
 
 /**
  * CarGo

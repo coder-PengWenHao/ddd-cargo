@@ -1,8 +1,6 @@
 package com.coderpwh.cargo.application.dto;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
 

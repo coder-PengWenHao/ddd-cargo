@@ -5,13 +5,10 @@ import com.coderpwh.cargo.application.assembler.vo.CargoBookVOAssembler;
 import com.coderpwh.cargo.application.command.CargoBookPageQuery;
 import com.coderpwh.cargo.application.dto.CargoBookDTO;
 import com.coderpwh.cargo.application.vo.CarGoBookVO;
-import com.coderpwh.cargo.common.database.PageTransformUtil;
-import com.coderpwh.cargo.common.database.PageUtils;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
-import com.github.pagehelper.PageHelper;
+import com.coderpwh.member.common.database.PageUtils;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**

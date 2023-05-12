@@ -1,8 +1,8 @@
 package com.coderpwh.cargo.infrastructure.persistence.converter;
 
-import com.coderpwh.cargo.common.util.mapstruct.MapStructConverter;
 import com.coderpwh.cargo.domain.model.CargoBook;
 import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
+import com.coderpwh.member.common.util.mapstruct.MapStructConverter;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

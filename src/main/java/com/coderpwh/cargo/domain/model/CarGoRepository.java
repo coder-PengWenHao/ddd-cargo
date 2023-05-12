@@ -2,8 +2,8 @@ package com.coderpwh.cargo.domain.model;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.coderpwh.cargo.application.command.CargoBookPageQuery;
-import com.coderpwh.cargo.common.database.PageUtils;
 import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
+import com.coderpwh.member.common.database.PageUtils;
 
 import java.util.List;
 

@@ -3,13 +3,13 @@ package com.coderpwh.cargo.infrastructure.persistence.repository.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.coderpwh.cargo.application.command.CargoBookPageQuery;
-import com.coderpwh.cargo.common.database.PageTransformUtil;
-import com.coderpwh.cargo.common.database.PageUtils;
 import com.coderpwh.cargo.domain.model.CarGoRepository;
 import com.coderpwh.cargo.domain.model.CargoBook;
 import com.coderpwh.cargo.infrastructure.persistence.converter.CargoBookConverter;
 import com.coderpwh.cargo.infrastructure.persistence.entity.CargoBookDO;
 import com.coderpwh.cargo.infrastructure.persistence.mapper.CargoBookMapper;
+import com.coderpwh.member.common.database.PageTransformUtil;
+import com.coderpwh.member.common.database.PageUtils;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
